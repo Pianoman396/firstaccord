@@ -1,24 +1,16 @@
 <?php
-class User(){
-	public function create(){
+ini_set('display_errors', '1');
+error_reporting(E_ALL);
+require_once(__DIR__.'/classes.php');
 
-	}
+//ini_set('display_errors', E_ALL);
+/**
+* 	Class for connect a Datebase an get a data
+*/
 
-	public function read(){
+/**
+* 	Class get a user data in form and
+*/
 
-	}
-
-	public function update(){
-
-	}
-
-	public function delete(){
-
-	}
-	if(isset($_POST['send']) && $_SERVER['REQUEST_METHOD'] == 'POST'){
-   	$user_name = $_POST['user'];
-   	$user_email = $_POST['user'];
-   	$user_password = $_POST['paswd'];
-   	$password_repeat = $_POST['repswd'];
-	}
-}
+$usr1 = new User(); // $userdata set atribute
+$usr1->create();
