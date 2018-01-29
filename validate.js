@@ -13,8 +13,6 @@
             form = dom.querySelector('.form');
             regx_email = new RegExp("/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})$/", "g");
 
-
-
             //Accepts
             //Name
             name.addEventListener('keyup', function() {
@@ -36,7 +34,6 @@
                     name.parentNode.insertBefore(new_node, name);*/
 
                 } else {
-
                     name.style.borderColor = "green";
                 }
             });

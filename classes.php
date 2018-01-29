@@ -1,6 +1,5 @@
 <?
 require_once(__DIR__.'/dbconfig.php');
-//require_once(__DIR__.'/userprofile.php');
 
 class User {
 
@@ -15,23 +14,17 @@ class User {
 	public function create(){
 		// $validator = new Validator($userdata); // $_POST data
 
-		if(isset($_POST['send'])){
-			// global $submit;
-			// global $name;
-			// global $surname;
-			// global $email;
-			// global $username;
-			// global $password;
-			// global $password;
-			$submit = $_POST['send'];
-   			$name = $_POST['user'];
+		if(isset($_POST['send']) && $_POST['send']){
+
+			$name = $_POST['user'];
    			$surname = $_POST['surname'];
    			$email = $_POST['email'];
    			$username = $_POST['username'];
    			$password = md5($_POST['pswd']);
    			$password = $password;
+   			$submit = $_POST['send'];
 
-   			$postVars = ['user' => '','surname' => '' ,'email' => '','username' => ''];
+   			$postVars = ['user' => '','surname' => '','email' => '','username' => ''];
    			// $postVars = ['fields'=>['user' => '','surname' => '' ,'email' => '','username' => '','pswd' =>''],'errors'=>''];
 
    			foreach($postVars as $name => $value):
@@ -40,7 +33,8 @@ class User {
    				endif;
 			endforeach;
 
-   			$redirect_to = htmlspecialchars("{$_SERVER['REQUEST_SCHEME']}"."://"."{$_SERVER['HTTP_HOST']}/register/index.php");
+			$current_url= "{$_SERVER['REQUEST_SCHEME']}"."://"."{$_SERVER['HTTP_HOST']}";
+   			$redirect_to = htmlspecialchars("{$current_url}/register/index.php");
    			// echo $redirect_to;
 
    			if($name == "" || $surname == "" || $email == "" || $username == ""){
@@ -57,6 +51,7 @@ class User {
 				header("Location:{$redirect_to}?{$attrs}");
 				exit;
 				}else{
+
 					// if($conn->connect_error){
 					// 	die("Connection Error {$conn->connect_error}");
 					// }
@@ -64,14 +59,13 @@ class User {
 					// 	echo "Database is not selected";
 					// }
 
-
 					global $conn;
 					$query = "INSERT INTO `users`(`name`, `surname`, `username`, `email`, `password`) VALUES (\"{$name}\",\"{$surname}\",\"{$username}\",\"{$email}\",\"{$password}\")";
 					$query = mysqli_query($conn,$query);
 					// mysqli_query($conn,$datasql);
 
 					//mysqli_query($conn, $query);
-					if(!$query){die(mysqli_error($conn)); } else { header("Location:login.php?success=true");die(0); }
+					if(!$query){die(mysqli_error($conn)); } else { header("Location:{$current_url}/login.php?success=true");die(0); }
 					mysqli_close($conn);
 
 
@@ -82,7 +76,6 @@ class User {
 
 	}
 	public function read(){
-
 
 	}
 

@@ -24,7 +24,7 @@ body{
 	margin:3% 3% 1% 0;
 }
 input{
-	outline:none;
+	outline:0;
 	border:1px solid silver;
 }
 input[type="submit"]{
