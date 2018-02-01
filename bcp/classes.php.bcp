@@ -1,5 +1,4 @@
 <?
-//Security issue
 require_once(__DIR__.'/load.php');
 if(!defined(LOAD)){
 	exit('Fuck You');
@@ -16,10 +15,10 @@ class User {
 
 	}
 
-	public function create($datas){
+	public function create(){
 		// $validator = new Validator($userdata); // $_POST data
-		if(isset($_POST['send']) && $_POST['send']){
 
+		if(isset($_POST['send']) && $_POST['send']){
 
 			   $name = $_POST['user'];
    			   $surname = $_POST['surname'];
@@ -28,6 +27,14 @@ class User {
    			   $password = hash('sha512',$_POST['pswd']);
    			   // $password = $password;
    			   $submit = $_POST['send'];
+
+   			// global $name;
+			// global $surname;
+			// global $email;
+			// global $username;
+			// global $password;
+			// global $password;
+			// global $submit;
 
    			$postVars = ['user' => '','surname' => '','email' => '','username' => ''];
    			// $postVars = ['fields'=>['user' => '','surname' => '' ,'email' => '','username' => '','pswd' =>''],'errors'=>''];
@@ -76,7 +83,7 @@ class User {
 
 	}
 	public function read($email){
-		$user = "SELECT * FROM `users` WHERE  (`email`= {$email})";
+		$user = "SELECT * FROM `users` WHERE  (`email`={$email})";
 		return $user;
 	}
 
@@ -129,23 +136,22 @@ class User {
 
 class Vaidator{
 	public $data;
+
 	function __construct($data){
 		$this->$data = $data;
 	}
 
 	public function name($name) {
 		// name validation
-		$name = $_POST['name'];
 		$errors = [];
 		$validated = false;
 		if(isset($name) && $name):
 			// katarvum a validacian
-			// $regex = '/^/w{4,10}$/';
+			$regex = '/^asdzxc$/';
 			$validated = true;
 
 		else:
 			// Empty field
-			echo "name isn't typed";
 		endif;
 
 		if(empty($errors)):
@@ -154,24 +160,14 @@ class Vaidator{
 			return array(['errors']=>$errors);
 		endif;
 	}
-	public function username($username) {
+	public function username() {
 		// username validation
-		$username = $_POST['username'];
-		if(isset($username) && $username){
-			// $regex = "";
-
-		}
-
 	}
 
 	public function email() {
 		// email validation
-		$username = $_POST['username'];
-		if(isset($username) && $username){
-			// $regex = "";
-
-		}
 	}
+
 	public function is_all_validated() {
 		$name_validation = $this->name($data['name']);
 		$email_validation = $this->email($data['email']);

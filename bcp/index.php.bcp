@@ -11,7 +11,7 @@ error_reporting(E_ALL);?>
 
 </head>
 <body><?  //var_dump(isset($_REQUEST['user']) && $_REQUEST['user']);  ?>
- <form class="form" action="router.php" method="POST" enctype="multiparte/form-data">
+ <form class="form" action="validate.php" method="POST" enctype="multiparte/form-data">
    <label><span class="title">Name:</span> <br><input type="text" class="user" name="user" value="<?=isset($_GET['user']) && $_GET['user'] ? $_GET['user'] : "" ?>" placeholder="Name"></label><span class="warning"></span><br>
    <label><span class="title">Surname:</span> <br><input type="text" class="surname" name="surname" value="<?=isset($_GET['surname']) && $_GET['surname'] ? $_GET['surname'] : "";?>" placeholder="Surname"></label><span class="warning"></span><br>
    <label><span class="title">Email:</span> <br><input type="em`ail" class="email" name="email" value="<?=isset($_GET['email']) && $_GET['email'] ? $_GET['email'] : "";?>" placeholder="Email"></label><br>
